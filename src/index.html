@@ -21,7 +21,6 @@
     <script type="module" src="./JS/controller.js"></script>
   </head>
   <body>
-    <button>toggle</button>
     <!--container for all project-->
     <div class="container">
       <!--navbar section-->
@@ -84,7 +83,7 @@
             autocorrect="on"
             class="toggle"
           />
-          <button class="btn toggle btn-search">
+          <button class="btn btn-search">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -99,6 +98,34 @@
             Search
           </button>
         </form>
+        <div class="toggle-theme">
+          <svg
+            class="sun"
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill="#fff"
+              d="M12 19a1 1 0 0 1 .993.883L13 20v1a1 1 0 0 1-1.993.117L11 21v-1a1 1 0 0 1 1-1m6.313-2.09l.094.083l.7.7a1 1 0 0 1-1.32 1.497l-.094-.083l-.7-.7a1 1 0 0 1 1.218-1.567zm-11.306.083a1 1 0 0 1 .083 1.32l-.083.094l-.7.7a1 1 0 0 1-1.497-1.32l.083-.094l.7-.7a1 1 0 0 1 1.414 0M4 11a1 1 0 0 1 .117 1.993L4 13H3a1 1 0 0 1-.117-1.993L3 11zm17 0a1 1 0 0 1 .117 1.993L21 13h-1a1 1 0 0 1-.117-1.993L20 11zM6.213 4.81l.094.083l.7.7a1 1 0 0 1-1.32 1.497l-.094-.083l-.7-.7A1 1 0 0 1 6.11 4.74zm12.894.083a1 1 0 0 1 .083 1.32l-.083.094l-.7.7a1 1 0 0 1-1.497-1.32l.083-.094l.7-.7a1 1 0 0 1 1.414 0M12 2a1 1 0 0 1 .993.883L13 3v1a1 1 0 0 1-1.993.117L11 4V3a1 1 0 0 1 1-1m0 5a5 5 0 1 1-4.995 5.217L7 12l.005-.217A5 5 0 0 1 12 7"
+            />
+          </svg>
+
+          <svg
+            class="moon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill="#fff"
+              d="M8.796 9.048c-1.552-2.238-1.199-5.323.61-8.1c-3.47-.12-6.6 2.232-7.269 5.672c-.742 3.82 1.83 7.533 5.749 8.294a7.23 7.23 0 0 0 7.526-3.218c-2.794.177-5.27-.711-6.616-2.648"
+            />
+          </svg>
+          <button class="btn btn-toggle-theme"></button>
+        </div>
       </div>
     </div>
   </body>

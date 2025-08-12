@@ -8,19 +8,28 @@
   --navbar-svg-fill: #6aab8b;
   --add-store-form-input-background-color: #eae8e4;
   --add-store-form-input-color: #5b515f;
-  --main-transition: 0.3s;
+  --button-background: linear-gradient(to left top in lch, #8dc693, #a2e1cb);
+  --form-shadow-color: transparent;
+  --toggle-theme-svgs-fill-color: #5b5146;
+  --toggle-theme-background-color: #eae8e4;
+
+  --main-transition: 0.4s;
 }
 
 //make body class with fark theme
 .dark-theme {
   --body-background-color: #3d6953;
   --container-background-color: #3c3b38;
+  --h1-color: #fff;
   --navbar-span-color: #fff;
   --navbar-svg-stroke: #36946b;
   --navbar-svg-fill: #36946b;
   --add-store-form-input-background-color: #32302d;
-  --add-store-form-input-color: #e7e2dd;
-  --h1-color: #fff;
+  --add-store-form-input-color: #eee;
+  --button-background: linear-gradient(to left top in lch, #365a3b, #457364);
+  --form-shadow-color: #0000004d;
+  --toggle-theme-svgs-fill-color: #dad3cd;
+  --toggle-theme-background-color: #32302d;
 }
 
 // make rules to run on whole website
@@ -33,7 +42,7 @@
   }
   transition: {
     duration: var(--main-transition);
-    timing-function: ease-in-out;
+    timing-function: ease-out;
   }
   margin: 0;
   padding: 0;
