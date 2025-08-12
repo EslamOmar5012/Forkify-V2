@@ -2,10 +2,9 @@
   "name": "forkify-v2",
   "version": "2.0.0",
   "description": "Forkify is a recipe web app that allows users to search, view, modify, bookmark and add recipes.",
-  "main": "index.js",
   "scripts": {
-    "start": "parcel src/index.html",
-    "build": "parcel build src/index.html"
+    "start": "parcel ./src/index.html",
+    "delete": "Remove-Item -Recurse -Force .parcel-cache, dist"
   },
   "repository": {
     "type": "git",
@@ -13,7 +12,7 @@
   },
   "keywords": [
     "food",
-    "recipe",
+    "recipes",
     "forkify"
   ],
   "author": "EslamXeno",
@@ -21,5 +20,10 @@
   "bugs": {
     "url": "https://github.com/EslamOmar5012/Forkify-V2/issues"
   },
-  "homepage": "https://github.com/EslamOmar5012/Forkify-V2#readme"
+  "homepage": "https://github.com/EslamOmar5012/Forkify-V2#readme",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.15.4",
+    "nodemon": "^3.1.10",
+    "parcel": "^2.15.4"
+  }
 }

@@ -1,1 +1,124 @@
-/*# sourceMappingURL=style.css.map */
+:root {
+  --main-background-color: #97d6b5;
+  --container-color: #fbf9f3;
+  --main-transition: 0.3s;
+}
+
+.dark-theme {
+  --main-background-color: #3d6953;
+  --container-color: #3c3b38;
+}
+
+* {
+  font-family: "Noto Sans", sans-serif;
+  box-sizing: content-box;
+  transition-duration: var(--main-transition);
+  transition-timing-function: ease-in-out;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--main-background-color);
+  transition: var(--main-transition);
+  padding: 40px 0px;
+}
+body.dark-theme {
+  background-color: var(--main-background-color);
+}
+
+.container {
+  margin: auto;
+  background-color: var(--container-color);
+  border-radius: 15px;
+}
+
+.container.dark-theme {
+  background-color: var(--container-color);
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1400px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+.navbar {
+  min-height: 100px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 5%;
+       column-gap: 5%;
+}
+.navbar > div,
+.navbar form {
+  display: flex;
+}
+.navbar .logo img {
+  max-width: 50px;
+}
+.navbar .logo h1 {
+  margin-left: 15px;
+  color: black;
+  font-family: "Pacifico", cursive;
+}
+.navbar .logo h1.dark-theme {
+  color: white;
+}
+.navbar .add-store .add,
+.navbar .add-store .store {
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 5px;
+       column-gap: 5px;
+  padding: 0 10px;
+}
+.navbar .add-store .add span,
+.navbar .add-store .store span {
+  font-weight: 500;
+}
+.navbar .add-store .add span.dark-theme,
+.navbar .add-store .store span.dark-theme {
+  color: white;
+}
+.navbar .add-store .add svg.dark-theme path,
+.navbar .add-store .store svg.dark-theme path {
+  stroke: #36946b;
+}
+.navbar .add-store .add:hover,
+.navbar .add-store .store:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.navbar .add-store .add:hover svg path,
+.navbar .add-store .store:hover svg path {
+  fill: #6aab8b;
+}
+.navbar .add-store .add:hover svg.dark-theme path,
+.navbar .add-store .store:hover svg.dark-theme path {
+  fill: #36946b;
+}
+.navbar #search-bar {
+  position: relative;
+}
+.navbar #search-bar input {
+  width: 350px;
+  flex: 1;
+  outline: none;
+  border: none;
+  background-color: #eae8e4;
+  padding: 20px;
+  font-size: 1.1em;
+  border-radius: 50px;
+}/*# sourceMappingURL=style.css.map */
