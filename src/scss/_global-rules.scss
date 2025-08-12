@@ -1,0 +1,59 @@
+//make root with light theme variables
+:root {
+  --main-background-color: #97d6b5;
+  --container-color: #fbf9f3;
+  --main-transition: 0.3s;
+}
+
+.dark-theme {
+  --main-background-color: #3d6953;
+  --container-color: #3c3b38;
+}
+
+// make rules to run on whole website
+* {
+  font: {
+    family: "Noto Sans", sans-serif;
+  }
+  box: {
+    sizing: content-box;
+  }
+  transition: {
+    duration: var(--main-transition);
+    timing-function: ease-in-out;
+  }
+  margin: 0;
+  padding: 0;
+}
+
+/// Mixin to apply CSS styles within a media query.
+///
+/// @param {String} $min-width - The minimum width for the media query (e.g. "600px").
+/// @param {String|null} $max-width - The maximum width for the media query (e.g. "900px"). Optional.
+/// @param {String} $class - The selector (class or element) to which styles will be applied.
+/// @param {Map} $styles - A map of CSS properties and values to apply (e.g. (color: red, font-size: 16px)).
+///
+/// Usage example:
+///   @include apply-style-with-media-query("600px", "900px", ".my-class", (color: red, font-size: 16px));
+///
+/// If $max-width is null or omitted, only min-width is applied.
+
+@mixin apply-style-with-media-query($min-width, $max-width, $class, $styles) {
+  @if $max-width != null {
+    @media (min-width: #{$min-width}) and (max-width: #{$max-width}) {
+      #{$class} {
+        @each $property, $value in $styles {
+          #{$property}: #{$value};
+        }
+      }
+    }
+  } @else {
+    @media (min-width: #{$min-width}) {
+      #{$class} {
+        @each $property, $value in $styles {
+          #{$property}: #{$value};
+        }
+      }
+    }
+  }
+}

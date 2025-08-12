@@ -13,12 +13,93 @@
     />
     <!--project icon-->
     <link rel="icon" href="./imgs/Project-Icon.ico" />
+
+    <!--main scss file-->
+    <link rel="stylesheet" href="./scss/style.SCSS" />
+
+    <!--main js file-->
     <script type="module" src="./JS/controller.js"></script>
   </head>
-  <body>
-    <div class="container py-4 px-3 mx-auto">
-      <h1>Hello, Bootstrap and Parcel!</h1>
-      <button class="btn btn-primary">Primary button</button>
+  <body class="toggle">
+    <button>toggle</button>
+    <!--container for all project-->
+    <div class="container toggle">
+      <!--navbar section-->
+      <div class="navbar">
+        <!--logo and name-->
+        <div class="logo">
+          <img src="./imgs/food.png" alt="forkify" title="Forkify-V2" />
+          <h1 class="toggle">Forkify</h1>
+        </div>
+        <!--addrecipe button and bookmarks button-->
+        <div class="add-store">
+          <div class="add">
+            <svg
+              class="toggle"
+              xmlns="http://www.w3.org/2000/svg"
+              width="30"
+              height="30"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="none"
+                stroke="#6AAB8B"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 20h4L18.5 9.5a2.828 2.828 0 1 0-4-4L4 16zm9.5-13.5l4 4M16 19h6m-3-3v6"
+              />
+            </svg>
+            <span class="toggle">Add Recipe</span>
+          </div>
+          <div class="store">
+            <svg
+              class="toggle"
+              xmlns="http://www.w3.org/2000/svg"
+              width="30"
+              height="30"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="none"
+                stroke="#6AAB8B"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 7.2v9.485c0 1.361 0 2.042.204 2.458a2 2 0 0 0 2.06 1.102c.46-.06 1.026-.438 2.158-1.193l.003-.002c.449-.3.673-.449.908-.532a2 2 0 0 1 1.333 0c.235.083.46.233.911.534c1.133.755 1.7 1.132 2.16 1.193a2 2 0 0 0 2.059-1.102c.204-.416.204-1.097.204-2.458V7.197c0-1.118 0-1.678-.218-2.105a2 2 0 0 0-.875-.874C16.48 4 15.92 4 14.8 4H9.2c-1.12 0-1.68 0-2.108.218a2 2 0 0 0-.874.874C6 5.52 6 6.08 6 7.2"
+              />
+            </svg>
+            <span class="toggle">Bookmarks</span>
+          </div>
+        </div>
+        <!--search bar-->
+        <form action="#" method="GET" id="search-bar">
+          <input
+            type="text"
+            name="search-input"
+            minlength="3"
+            maxlength="10"
+            placeholder="Search Over 1,000,0000 Recipes"
+            autofocus
+            autocorrect="on"
+            class="toggle"
+          />
+          <button class="btn toggle btn-search">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="#fff"
+                d="m19.6 21l-6.3-6.3q-.75.6-1.725.95T9.5 16q-2.725 0-4.612-1.888T3 9.5t1.888-4.612T9.5 3t4.613 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l6.3 6.3zM9.5 14q1.875 0 3.188-1.312T14 9.5t-1.312-3.187T9.5 5T6.313 6.313T5 9.5t1.313 3.188T9.5 14"
+              />
+            </svg>
+            Search
+          </button>
+        </form>
+      </div>
     </div>
   </body>
 </html>

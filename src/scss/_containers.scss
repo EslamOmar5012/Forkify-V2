@@ -1,0 +1,80 @@
+@use "./global-rules";
+
+//dark theme class
+$dark-theme-class: ".dark-theme";
+
+//variables for container sizes
+$small-container: 960px;
+$small-screen: 992px;
+
+$medium-container: 1140px;
+$medium-screen: 1200px;
+
+$big-container: 1320px;
+$big-screen: 1400px;
+
+//make white theme and dark theme for body
+body {
+  background-color: var(--main-background-color);
+  &#{$dark-theme-class} {
+    background-color: var(--main-background-color);
+  }
+  transition: var(--main-transition);
+  padding: 40px 0px;
+}
+
+//make media queries to change sizes of container
+.container {
+  margin: auto;
+  background-color: var(--container-color);
+  border-radius: 15px;
+}
+
+.container#{$dark-theme-class} {
+  background-color: var(--container-color);
+}
+
+/// Mixin to create responsive container sizes with customizable min and max width breakpoints.
+///
+/// Applies a `max-width` style to a given CSS selector inside a media query defined by minimum
+/// and optional maximum viewport widths.
+///
+/// @param {String} $min-width
+///   The minimum viewport width at which the container size applies (e.g. "600px").
+///
+/// @param {String|null} $max-width
+///   Optional maximum viewport width to limit the media query (e.g. "900px").
+///   If `null`, media query only uses min-width.
+///
+/// @param {String} $width
+///   The CSS width value to apply as max-width on the container (e.g. "500px", "90%", etc.).
+///
+/// @param {String} $class
+///   The CSS selector (class, id, or element) to which the max-width will be applied.
+///
+
+@mixin size($min-width, $max-width, $width, $class) {
+  @if $max-width != null {
+    @media (min-width: #{$min-width}) and
+    (max-width: #{$max-width}) {
+      #{$class} {
+        max-width: $width;
+      }
+    }
+  } @else {
+    @media (min-width: #{$min-width}) {
+      #{$class} {
+        max-width: $width;
+      }
+    }
+  }
+}
+
+//small container
+@include size($small-screen, $medium-screen, $small-container, ".container");
+
+//medium container
+@include size($medium-screen, $big-screen, $medium-container, ".container");
+
+//big container
+@include size($big-screen, null, $big-container, ".container");
