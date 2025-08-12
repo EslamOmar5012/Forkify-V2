@@ -1,5 +1,5 @@
 @use "./global-rules";
-$dark-theme: ".dark-theme";
+
 .navbar {
   min-height: 100px;
   padding: 0 10px;
@@ -20,11 +20,8 @@ $dark-theme: ".dark-theme";
     }
     h1 {
       margin-left: 15px;
-      color: black;
+      color: var(--h1-color);
       font-family: "Pacifico", cursive;
-      &#{$dark-theme} {
-        color: white;
-      }
     }
   }
 
@@ -38,13 +35,11 @@ $dark-theme: ".dark-theme";
       padding: 0 10px;
       span {
         font-weight: 500;
-        &#{$dark-theme} {
-          color: white;
-        }
+        color: var(--navbar-span-color);
       }
 
-      svg#{$dark-theme} path {
-        stroke: #36946b;
+      svg path {
+        stroke: var(--navbar-svg-stroke);
       }
 
       &:hover {
@@ -53,11 +48,7 @@ $dark-theme: ".dark-theme";
       }
 
       &:hover svg path {
-        fill: #6aab8b;
-      }
-
-      &:hover svg#{$dark-theme} path {
-        fill: #36946b;
+        fill: var(--navbar-svg-fill);
       }
     }
   }
@@ -70,11 +61,8 @@ $dark-theme: ".dark-theme";
       flex: 1;
       outline: none;
       border: none;
-      background-color: #eae8e4;
-      &#{$dark-theme} {
-        background-color: #32302d;
-        color: #e7e2dd;
-      }
+      background-color: var(--add-store-form-input-background-color);
+      color: var(--add-store-form-input-color);
       padding: 20px;
       font-size: 1em;
       border-radius: 50px;

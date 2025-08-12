@@ -15,10 +15,7 @@ $big-screen: 1400px;
 
 //make white theme and dark theme for body
 body {
-  background-color: var(--main-background-color);
-  &#{$dark-theme-class} {
-    background-color: var(--main-background-color);
-  }
+  background-color: var(--body-background-color);
   transition: var(--main-transition);
   padding: 40px 0px;
 }
@@ -26,12 +23,8 @@ body {
 //make media queries to change sizes of container
 .container {
   margin: auto;
-  background-color: var(--container-color);
+  background-color: var(--container-background-color);
   border-radius: 15px;
-}
-
-.container#{$dark-theme-class} {
-  background-color: var(--container-color);
 }
 
 /// Mixin to create responsive container sizes with customizable min and max width breakpoints.

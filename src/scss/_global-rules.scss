@@ -1,13 +1,26 @@
 //make root with light theme variables
 :root {
-  --main-background-color: #97d6b5;
-  --container-color: #fbf9f3;
+  --body-background-color: #97d6b5;
+  --container-background-color: #fbf9f3;
+  --h1-color: #000;
+  --navbar-span-color: #000;
+  --navbar-svg-stroke: #6aab8b;
+  --navbar-svg-fill: #6aab8b;
+  --add-store-form-input-background-color: #eae8e4;
+  --add-store-form-input-color: #5b515f;
   --main-transition: 0.3s;
 }
 
+//make body class with fark theme
 .dark-theme {
-  --main-background-color: #3d6953;
-  --container-color: #3c3b38;
+  --body-background-color: #3d6953;
+  --container-background-color: #3c3b38;
+  --navbar-span-color: #fff;
+  --navbar-svg-stroke: #36946b;
+  --navbar-svg-fill: #36946b;
+  --add-store-form-input-background-color: #32302d;
+  --add-store-form-input-color: #e7e2dd;
+  --h1-color: #fff;
 }
 
 // make rules to run on whole website
