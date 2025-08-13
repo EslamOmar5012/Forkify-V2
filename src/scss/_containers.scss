@@ -1,14 +1,14 @@
 @use "./global-rules";
 
 //variables for container sizes
-$small-container: 960px;
-$small-screen: 992px;
-
-$medium-container: 1140px;
-$medium-screen: 1200px;
-
-$big-container: 1320px;
 $big-screen: 1400px;
+$big-container: 1320px;
+
+$medium-screen: 1200px;
+$medium-container: 1140px;
+
+$small-screen: 992px;
+$small-container: 960px;
 
 //make white theme and dark theme for body
 body {

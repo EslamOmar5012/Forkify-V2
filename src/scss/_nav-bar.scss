@@ -1,12 +1,13 @@
 @use "./global-rules";
 
 .navbar {
+  position: relative;
   min-height: 100px;
   padding: 0 10px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  column-gap: 5%;
+  column-gap: 30px;
 
   > div,
   form {
@@ -25,10 +26,20 @@
     }
   }
 
+  @include global-rules.apply-style-with-media-query(
+    null,
+    992px,
+    ".logo h1",
+    (
+      display: none,
+    )
+  );
+
   .add-store {
+    position: relative;
     .add,
     .store {
-      min-height: 100px;
+      height: 100px;
       display: flex;
       align-items: center;
       column-gap: 5px;
@@ -51,21 +62,114 @@
         fill: var(--navbar-svg-fill);
       }
     }
+
+    .recipes-stored {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 120%;
+      padding: 20px;
+      background-color: var(--container-background-color);
+      box-shadow: 0px 5px 15px #0000004d;
+      perspective-origin: bottom left;
+      transform: {
+        origin: top right;
+        style: preserve-3d;
+      }
+      transform: rotate3d(1, 0, 0, 90deg) scale(0);
+      .message-container {
+        height: 150px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        svg {
+          margin-right: 10px;
+          path {
+            stroke: var(--navbar-svg-stroke);
+          }
+          circle {
+            fill: var(--navbar-svg-fill);
+          }
+        }
+        P {
+          color: var(--navbar-span-color);
+        }
+      }
+    }
+
+    .store:is(:hover, :focus-within) + .recipes-stored,
+    .recipes-stored:hover {
+      transform: rotate3d(1, 0, 0, 0deg) scale(1);
+    }
   }
 
+  @include global-rules.apply-style-with-media-query(
+    null,
+    992px,
+    ".add-store",
+    (
+      justify-content: space-around,
+      position: absolute,
+      top: 110%,
+      right: 20px,
+      background-color: var(--toggle-theme-background-color),
+      border-radius: 50px,
+      width: 220px,
+      height: 40px,
+      font-size: 0.7rem,
+    )
+  );
+
+  @include global-rules.apply-style-with-media-query(
+    null,
+    992px,
+    ".add-store .add",
+    (
+      height: 40px,
+      flex: 1,
+      align-self: center,
+      border-top-left-radius: 50px,
+      border-bottom-left-radius: 50px,
+    )
+  );
+
+  @include global-rules.apply-style-with-media-query(
+    null,
+    992px,
+    ".add-store .store",
+    (
+      height: 40px,
+      flex: 1,
+      align-self: center,
+      border-top-right-radius: 50px,
+      border-bottom-right-radius: 50px,
+    )
+  );
+
+  @include global-rules.apply-style-with-media-query(
+    null,
+    992px,
+    ".add-store svg",
+    (
+      width: 20,
+      height: 20,
+    )
+  );
+
   #search-bar {
+    justify-content: space-around;
     background-color: var(--add-store-form-input-background-color);
-    flex: 0.8;
+    width: 400px;
     border-radius: 50px;
     input[name="search-input"] {
-      flex: 0.9;
+      width: 60%;
       border-radius: inherit;
       outline: none;
       border: none;
       background-color: inherit;
       color: var(--add-store-form-input-color);
       padding: 15px;
-      font-size: 1em;
+      font-size: 15px;
     }
     button {
       display: flex;
@@ -76,9 +180,10 @@
       color: #fff;
       border: none;
       border-radius: 50px;
-      flex: 0.5;
+      padding: 10px;
+      width: 30%;
       font: {
-        size: 1.1em;
+        size: 15px;
         weight: 600;
       }
       svg {
@@ -93,6 +198,24 @@
       box-shadow: 0px 5px 15px var(--form-shadow-color);
     }
   }
+
+  @include global-rules.apply-style-with-media-query(
+    null,
+    1200px,
+    "#search-bar",
+    (
+      width: 250px,
+    )
+  );
+
+  @include global-rules.apply-style-with-media-query(
+    null,
+    1200px,
+    "#search-bar button",
+    (
+      width: 50%,
+    )
+  );
 
   .toggle-theme {
     position: relative;
@@ -112,8 +235,8 @@
     .btn {
       position: absolute;
       right: 10px;
-      width: 40px;
-      height: 40px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
       border: none;
       background-image: var(--button-background);
@@ -125,4 +248,15 @@
       }
     }
   }
+
+  @include global-rules.apply-style-with-media-query(
+    null,
+    992px,
+    ".toggle-theme",
+    (
+      position: absolute,
+      top: 110%,
+      left: 20px,
+    )
+  );
 }

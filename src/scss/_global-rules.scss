@@ -50,7 +50,7 @@
 
 /// Mixin to apply CSS styles within a media query.
 ///
-/// @param {String} $min-width - The minimum width for the media query (e.g. "600px").
+/// @param {String|null} $min-width - The minimum width for the media query (e.g. "600px"). Optional.
 /// @param {String|null} $max-width - The maximum width for the media query (e.g. "900px"). Optional.
 /// @param {String} $class - The selector (class or element) to which styles will be applied.
 /// @param {Map} $styles - A map of CSS properties and values to apply (e.g. (color: red, font-size: 16px)).
@@ -61,8 +61,16 @@
 /// If $max-width is null or omitted, only min-width is applied.
 
 @mixin apply-style-with-media-query($min-width, $max-width, $class, $styles) {
-  @if $max-width != null {
-    @media (min-width: #{$min-width}) and (max-width: #{$max-width}) {
+  @if $max-width != null and $min-width == null {
+    @media (max-width: #{$max-width}) {
+      #{$class} {
+        @each $property, $value in $styles {
+          #{$property}: #{$value};
+        }
+      }
+    }
+  } @else if $min-width != null and $max-width == null {
+    @media (min-width: #{$min-width}) {
       #{$class} {
         @each $property, $value in $styles {
           #{$property}: #{$value};
@@ -70,7 +78,7 @@
       }
     }
   } @else {
-    @media (min-width: #{$min-width}) {
+    @media (min-width: #{$min-width}) and (max-width: #{$max-width}) {
       #{$class} {
         @each $property, $value in $styles {
           #{$property}: #{$value};
