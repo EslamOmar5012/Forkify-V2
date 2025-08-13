@@ -219,11 +219,15 @@
 
   .toggle-theme {
     position: relative;
-    column-gap: 20px;
+
     align-items: center;
     background-color: var(--toggle-theme-background-color);
     padding: 10px 15px;
     border-radius: 50px;
+    div {
+      display: flex;
+      column-gap: 20px;
+    }
     svg {
       path {
         fill: var(--toggle-theme-svgs-fill-color);
