@@ -9,16 +9,14 @@ const searchBar = document.querySelector(".input-search-bar");
 
 const mq = window.matchMedia("(max-width: 1200px)");
 
-const updatePlaceholder = function (e) {
-  if (mq.matches) {
-    searchBar.placeholder = "";
-  } else {
-    searchBar.placeholder = "Search Over 1,000,0000 Recipes";
-  }
+const updatePlaceholder = () => {
+  mq.matches
+    ? (searchBar.placeholder = "")
+    : (searchBar.placeholder = "Search Over 1,000,0000 Recipes");
 };
 
 // Run on page load
-updatePlaceholder(mq);
+updatePlaceholder();
 
 // Run whenever the screen size matches/unmatches
 mq.addEventListener("change", updatePlaceholder);
