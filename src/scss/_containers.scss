@@ -1,70 +1,84 @@
 @use "./global-rules";
 
-//variables for container sizes
+// ======================================
+// 📏 CONTAINER SIZE VARIABLES
+// ======================================
+// Breakpoints
 $big-screen: 1400px;
-$big-container: 1320px;
-
 $medium-screen: 1200px;
-$medium-container: 1140px;
-
 $small-screen: 992px;
+
+// Container widths
+$big-container: 1320px;
+$medium-container: 1140px;
 $small-container: 960px;
 
-//make white theme and dark theme for body
+// ======================================
+// 🎨 BODY STYLING (THEME-DEPENDENT)
+// ======================================
 body {
-  background-color: var(--body-background-color);
+  background-color: var(--bg-1); // Light/Dark theme value from CSS vars
   transition: var(--main-transition);
-  padding: 40px 0px;
+  padding: 40px 0;
 }
 
-//make media queries to change sizes of container
+// ======================================
+// 📦 CONTAINER BASE STYLE
+// ======================================
 .container {
   margin: auto;
-  background-color: var(--container-background-color);
   border-radius: 15px;
 }
 
-/// Mixin to create responsive container sizes with customizable min and max width breakpoints.
+// ======================================
+// 🛠 RESPONSIVE CONTAINER MIXIN
+// ======================================
+/// Creates responsive container widths for specific breakpoints.
 ///
-/// Applies a `max-width` style to a given CSS selector inside a media query defined by minimum
-/// and optional maximum viewport widths.
+/// @param {String}       $min-width - Minimum viewport width (e.g., "600px").
+/// @param {String|null}  $max-width - Optional maximum viewport width (e.g., "900px"). Null means no upper limit.
+/// @param {String}       $width     - Max-width value for the container (e.g., "90%", "1200px").
+/// @param {String}       $selector  - CSS selector to apply the max-width to.
 ///
-/// @param {String} $min-width
-///   The minimum viewport width at which the container size applies (e.g. "600px").
+/// Example:
+///   @include size(992px, 1200px, 960px, ".container");
 ///
-/// @param {String|null} $max-width
-///   Optional maximum viewport width to limit the media query (e.g. "900px").
-///   If `null`, media query only uses min-width.
-///
-/// @param {String} $width
-///   The CSS width value to apply as max-width on the container (e.g. "500px", "90%", etc.).
-///
-/// @param {String} $class
-///   The CSS selector (class, id, or element) to which the max-width will be applied.
-///
-
-@mixin size($min-width, $max-width, $width, $class) {
+@mixin size($min-width, $max-width, $width, $selector) {
   @if $max-width != null {
-    @media (min-width: #{$min-width}) and
-    (max-width: #{$max-width}) {
-      #{$class} {
+    // Between min and max
+    @media (min-width: #{$min-width}) and (max-width: #{$max-width}) {
+      #{$selector} {
         max-width: $width;
       }
     }
   } @else {
+    // Min only
     @media (min-width: #{$min-width}) {
-      #{$class} {
+      #{$selector} {
         max-width: $width;
       }
     }
   }
 }
 
-//small container
-@include size($small-screen, $medium-screen, $small-container, ".container");
-
-//medium container
-@include size($medium-screen, $big-screen, $medium-container, ".container");
-
-//big container
-@include size($big-screen, null, $big-container, ".container");
+// ======================================
+// 📱 RESPONSIVE CONTAINER QUERIES
+// ======================================
+@include size(
+  $small-screen,
+  $medium-screen,
+  $small-container,
+  ".container"
+); // Small container
+@include size(
+  $medium-screen,
+  $big-screen,
+  $medium-container,
+  ".container"
+); // Medium container
+@include size(
+  $big-screen,
+  null,
+  $big-container,
+  ".container"
+); // Large container

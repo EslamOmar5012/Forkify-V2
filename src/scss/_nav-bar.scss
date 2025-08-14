@@ -1,6 +1,10 @@
 @use "./global-rules";
 
+// ========================
+// NAVBAR STYLES
+// ========================
 .navbar {
+  background-color: var(--bg-2);
   position: relative;
   min-height: 100px;
   padding: 0 10px;
@@ -9,23 +13,27 @@
   align-items: center;
   column-gap: 30px;
 
+  // Flex container for direct child divs & form
   > div,
   form {
     display: flex;
-    // align-items: stretch;
   }
 
+  // ------------------------
+  // LOGO
+  // ------------------------
   .logo {
     img {
       max-width: 50px;
     }
     h1 {
       margin-left: 15px;
-      color: var(--h1-color);
+      color: var(--c-1);
       font-family: "Pacifico", cursive;
     }
   }
 
+  // Hide logo text on smaller screens
   @include global-rules.apply-style-with-media-query(
     null,
     992px,
@@ -35,8 +43,13 @@
     )
   );
 
+  // ------------------------
+  // ADD STORE & DROPDOWN
+  // ------------------------
   .add-store {
     position: relative;
+
+    // Shared styles for .add & .store buttons
     .add,
     .store {
       height: 100px;
@@ -44,65 +57,219 @@
       align-items: center;
       column-gap: 5px;
       padding: 0 10px;
+
       span {
         font-weight: 500;
-        color: var(--navbar-span-color);
+        color: var(--c-1);
       }
-
       svg path {
-        stroke: var(--navbar-svg-stroke);
+        stroke: var(--c-2);
       }
 
       &:hover {
-        background-color: rgba(0, 0, 0, 0.2);
+        background-color: var(--overlay-bg);
         cursor: pointer;
-      }
-
-      &:hover svg path {
-        fill: var(--navbar-svg-fill);
+        svg path {
+          fill: var(--c-2);
+        }
       }
     }
 
+    // Dropdown container
     .recipes-stored {
       position: absolute;
+      z-index: 1;
       top: 100%;
       right: 0;
-      width: 120%;
-      padding: 20px;
-      background-color: var(--container-background-color);
+      width: 130%;
+      padding: 10px 0;
+      border-radius: 0 0 10px 10px;
+      background-color: var(--bg-2);
       box-shadow: 0px 5px 15px #0000004d;
-      perspective-origin: bottom left;
-      transform: {
-        origin: top right;
-        style: preserve-3d;
-      }
+      transform-origin: top right;
       transform: rotate3d(1, 0, 0, 90deg) scale(0);
+      perspective-origin: bottom left;
+
+      // Empty state message
       .message-container {
+        padding-left: 10px;
         height: 150px;
-        width: 100%;
         display: flex;
         align-items: center;
+
         svg {
           margin-right: 10px;
           path {
-            stroke: var(--navbar-svg-stroke);
+            stroke: var(--c-2);
           }
           circle {
-            fill: var(--navbar-svg-fill);
+            fill: var(--c-2);
           }
         }
-        P {
-          color: var(--navbar-span-color);
+        p {
+          color: var(--c-1);
+        }
+      }
+
+      // Bookmark items
+      .bookmark {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        column-gap: 10px;
+        margin-bottom: 15px;
+        padding: 5px;
+
+        a {
+          display: none;
+        }
+        &:hover {
+          transform: translateY(-5px);
+          cursor: pointer;
+
+          &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: var(--overlay-bg);
+          }
+        }
+
+        .image {
+          overflow: hidden;
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .text {
+          flex: 1;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          min-width: 0;
+
+          p {
+            font-size: 1em;
+            font-weight: 500;
+            color: var(--c-2);
+            text-transform: uppercase;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          span {
+            color: var(--c-3);
+          }
         }
       }
     }
 
+    // Show dropdown on hover or focus
     .store:is(:hover, :focus-within) + .recipes-stored,
     .recipes-stored:hover {
       transform: rotate3d(1, 0, 0, 0deg) scale(1);
     }
   }
 
+  // ------------------------
+  // SEARCH BAR
+  // ------------------------
+  #search-bar {
+    justify-content: space-around;
+    background-color: var(--bg-3);
+    width: 400px;
+    border-radius: 50px;
+
+    input[name="search-input"] {
+      width: 60%;
+      border-radius: inherit;
+      border: none;
+      outline: none;
+      background-color: inherit;
+      color: var(--c-3);
+      padding: 15px;
+      font-size: 15px;
+    }
+
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: var(--btn-bg);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 10px;
+      width: 30%;
+      font-size: 15px;
+      font-weight: 600;
+
+      svg {
+        margin-right: 5px;
+      }
+
+      &:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+      }
+    }
+
+    // Shadow on focus
+    &:has(input[name="search-input"]:focus) {
+      box-shadow: 0px 5px 15px var(--shadow-c-1);
+    }
+  }
+
+  // ------------------------
+  // THEME TOGGLE
+  // ------------------------
+  .toggle-theme {
+    position: relative;
+    align-items: center;
+    background-color: var(--bg-3);
+    padding: 10px 15px;
+    border-radius: 50px;
+
+    div {
+      display: flex;
+      column-gap: 20px;
+    }
+
+    svg path {
+      fill: var(--c-3);
+    }
+
+    svg.rotate {
+      transform: rotate(360deg);
+    }
+
+    .btn {
+      position: absolute;
+      right: 10px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: none;
+      background-image: var(--btn-bg);
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &.left {
+        transform: translateX(-120%);
+      }
+    }
+  }
+
+  // ------------------------
+  // RESPONSIVE ADJUSTMENTS
+  // ------------------------
   @include global-rules.apply-style-with-media-query(
     null,
     992px,
@@ -112,7 +279,7 @@
       position: absolute,
       top: 110%,
       right: 20px,
-      background-color: var(--toggle-theme-background-color),
+      background-color: var(--bg-3),
       border-radius: 50px,
       width: 220px,
       height: 40px,
@@ -156,49 +323,6 @@
     )
   );
 
-  #search-bar {
-    justify-content: space-around;
-    background-color: var(--add-store-form-input-background-color);
-    width: 400px;
-    border-radius: 50px;
-    input[name="search-input"] {
-      width: 60%;
-      border-radius: inherit;
-      outline: none;
-      border: none;
-      background-color: inherit;
-      color: var(--add-store-form-input-color);
-      padding: 15px;
-      font-size: 15px;
-    }
-    button {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      justify-content: center;
-      background-image: var(--button-background);
-      color: #fff;
-      border: none;
-      border-radius: 50px;
-      padding: 10px;
-      width: 30%;
-      font: {
-        size: 15px;
-        weight: 600;
-      }
-      svg {
-        margin-right: 5px;
-      }
-      &:hover {
-        transform: scale(1.1);
-        cursor: pointer;
-      }
-    }
-    &:has(input[name="search-input"]:focus) {
-      box-shadow: 0px 5px 15px var(--form-shadow-color);
-    }
-  }
-
   @include global-rules.apply-style-with-media-query(
     null,
     1200px,
@@ -216,42 +340,6 @@
       width: 50%,
     )
   );
-
-  .toggle-theme {
-    position: relative;
-
-    align-items: center;
-    background-color: var(--toggle-theme-background-color);
-    padding: 10px 15px;
-    border-radius: 50px;
-    div {
-      display: flex;
-      column-gap: 20px;
-    }
-    svg {
-      path {
-        fill: var(--toggle-theme-svgs-fill-color);
-      }
-      &.rotate {
-        transform: rotate(360deg);
-      }
-    }
-    .btn {
-      position: absolute;
-      right: 10px;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      border: none;
-      background-image: var(--button-background);
-      &:hover {
-        cursor: pointer;
-      }
-      &.left {
-        transform: translateX(-120%);
-      }
-    }
-  }
 
   @include global-rules.apply-style-with-media-query(
     null,

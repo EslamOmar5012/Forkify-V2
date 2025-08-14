@@ -4,8 +4,7 @@
   "description": "Forkify is a recipe web app that allows users to search, view, modify, bookmark and add recipes.",
   "scripts": {
     "start": "parcel ./src/index.html",
-    "build": "parcel build ./src/index.html",
-    "delete": "Remove-Item -Recurse -Force .parcel-cache, dist"
+    "build": "parcel build ./src/index.html"
   },
   "repository": {
     "type": "git",

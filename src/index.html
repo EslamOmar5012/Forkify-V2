@@ -3,34 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Forkify //Search Over 1,000,000 Recipes</title>
-    <!--noto sans web font-->
+    <meta
+      name="description"
+      content="Forkify V2 – Search over 1,000,000 recipes, save bookmarks, and add your own favorite dishes."
+    />
+    <title>Forkify // Search Over 1,000,000 Recipes</title>
+
+    <!-- Noto Sans Web Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    <!--project icon-->
-    <link rel="icon" href="./imgs/Project-Icon.ico" />
 
-    <!--main scss file-->
-    <link rel="stylesheet" href="./scss/style.SCSS" />
+    <!-- Project Icon -->
+    <link rel="shortcut icon" href="./imgs/Project-Icon.ico" />
 
-    <!--main js file-->
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="./scss/style.scss" />
+
+    <!-- Main Script -->
     <script type="module" src="./JS/controller.js"></script>
   </head>
   <body>
-    <!--container for all project-->
     <div class="container">
-      <!--navbar section-->
+      <!-- Navbar -->
       <div class="navbar">
-        <!--logo and name-->
+        <!-- Logo -->
         <div class="logo">
-          <img src="./imgs/food.png" alt="forkify" title="Forkify-V2" />
+          <img src="./imgs/food.png" alt="Forkify" title="Forkify V2" />
           <h1>Forkify</h1>
         </div>
-        <!--addrecipe button and bookmarks button-->
+
+        <!-- Add Recipe & Bookmarks -->
         <div class="add-store">
           <div class="add">
             <div>
@@ -52,6 +58,7 @@
             </div>
             <span>Add Recipe</span>
           </div>
+
           <div class="store">
             <div>
               <svg
@@ -72,7 +79,20 @@
             </div>
             <span>Bookmarks</span>
           </div>
+
           <div class="recipes-stored">
+            <!--saved bookmarks-->
+            <!-- <div class="bookmark">
+              <div class="image">
+                <img src="./imgs/1813674_MEDIUM6f4a.jpg" alt="img" />
+              </div>
+              <div class="text">
+                <p>Roasted Mushroom</p>
+                <span>Closet Cooking</span>
+              </div>
+              <a href=""></a>
+            </div> -->
+
             <div class="message-container">
               <div>
                 <svg
@@ -97,21 +117,19 @@
                   </g>
                 </svg>
               </div>
-
-              <p>
-                No Bookmarks Yet. Find a Nice Recipe and Bookmark it ;&rpar;
-              </p>
+              <p>No Bookmarks Yet. Find a Nice Recipe and Bookmark it ;)</p>
             </div>
           </div>
         </div>
-        <!--search bar-->
-        <form action="#" method="GET" id="search-bar">
+
+        <!-- Search Bar -->
+        <form id="search-bar" method="GET">
           <input
             type="text"
             name="search-input"
             minlength="3"
             maxlength="10"
-            placeholder="Search Over 1,000,0000 Recipes"
+            placeholder="Search Over 1,000,000 Recipes"
             autofocus
             autocorrect="on"
             class="input-search-bar"
@@ -130,10 +148,11 @@
                 />
               </svg>
             </div>
-
             Search
           </button>
         </form>
+
+        <!-- Theme Toggle -->
         <div class="toggle-theme">
           <div>
             <svg
@@ -162,6 +181,45 @@
             </svg>
           </div>
           <button class="btn btn-toggle-theme"></button>
+        </div>
+      </div>
+
+      <!-- Results & Recipes -->
+      <div class="results-recipes">
+        <!-- Results -->
+        <div class="results">
+          <!-- <div class="result">
+            <div class="image">
+              <img src="./imgs/1813674_MEDIUM6f4a.jpg" alt="img" />
+            </div>
+            <div class="text">
+              <p>Roasted Mushroom and Green Bean Farro Salad eslam omar</p>
+              <span>Closet Cooking</span>
+            </div>
+            <a href=""></a>
+          </div> -->
+
+          <div class="title">
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="#fff"
+                  d="M12 2a9 9 0 0 0-9 9v11l3-3l3 3l3-3l3 3l3-3l3 3V11a9 9 0 0 0-9-9m7 15.17l-1-1l-1.41 1.42L15 19.17l-1.59-1.58L12 16.17l-1.41 1.42L9 19.17l-1.59-1.58L6 16.17l-1 1V11c0-3.86 3.14-7 7-7s7 3.14 7 7zM11 10c0 1.11-.89 2-2 2s-2-.89-2-2s.9-2 2-2s2 .9 2 2m6 0c0 1.11-.89 2-2 2s-2-.89-2-2s.9-2 2-2s2 .9 2 2"
+                />
+              </svg>
+            </div>
+            <h3>Start by Searching for a Recipe, Have Fun!</h3>
+          </div>
+        </div>
+
+        <!-- Recipes -->
+        <div class="recipes">
+          <h2>What Can You Do in Forkify V2?</h2>
         </div>
       </div>
     </div>

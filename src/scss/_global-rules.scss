@@ -1,87 +1,112 @@
-//make root with light theme variables
+// ======================================
+// 🌈 THEME VARIABLES
+// ======================================
+
+// --- Light Theme (Default) ---
 :root {
-  --body-background-color: #97d6b5;
-  --container-background-color: #fbf9f3;
-  --h1-color: #000;
-  --navbar-span-color: #000;
-  --navbar-svg-stroke: #6aab8b;
-  --navbar-svg-fill: #6aab8b;
-  --add-store-form-input-background-color: #eae8e4;
-  --add-store-form-input-color: #5b515f;
-  --button-background: linear-gradient(to left top in lch, #8dc693, #a2e1cb);
-  --form-shadow-color: transparent;
-  --toggle-theme-svgs-fill-color: #5b5146;
-  --toggle-theme-background-color: #eae8e4;
+  // Background colors
+  --bg-1: #97d6b5;
+  --bg-2: #fbf9f3;
+  --bg-3: #eae8e4;
+  --bg-4: #fff;
+  --btn-bg: linear-gradient(to left top in lch, #8dc693, #a2e1cb);
+  --overlay-bg: rgba(0, 0, 0, 0.2);
 
-  --main-transition: 0.4s;
+  // Text & accent colors
+  --c-1: #000;
+  --c-2: #6aab8b;
+  --c-3: #5b515f;
+  --c-4: #5b5146;
+
+  // Shadows
+  --shadow-c-1: #0000004d;
+
+  // Animation speed
+  --main-trans: 0.4s;
 }
 
-//make body class with fark theme
+// --- Dark Theme ---
+// Applied by adding `.dark-theme` to the <body> element
 .dark-theme {
-  --body-background-color: #3d6953;
-  --container-background-color: #3c3b38;
-  --h1-color: #fff;
-  --navbar-span-color: #fff;
-  --navbar-svg-stroke: #36946b;
-  --navbar-svg-fill: #36946b;
-  --add-store-form-input-background-color: #32302d;
-  --add-store-form-input-color: #eee;
-  --button-background: linear-gradient(to left top in lch, #365a3b, #457364);
-  --form-shadow-color: #0000004d;
-  --toggle-theme-svgs-fill-color: #dad3cd;
-  --toggle-theme-background-color: #32302d;
+  // Background colors
+  --bg-1: #3d6953;
+  --bg-2: #3c3b38;
+  --bg-3: #32302d;
+  --bg-4: #27261f;
+  --btn-bg: linear-gradient(to left top in lch, #365a3b, #457364);
+
+  // Text & accent colors
+  --c-1: #fff;
+  --c-2: #36946b;
+  --c-3: #eee;
+  --c-4: #dad3cd;
+
+  // Shadows (optional override if needed)
+  // --shadow-c-1: #0000004d;
 }
 
-// make rules to run on whole website
+// ======================================
+// 🛠 GLOBAL RESET & BASE STYLES
+// ======================================
 * {
-  font: {
-    family: "Noto Sans", sans-serif;
-  }
-  box: {
-    sizing: content-box;
-  }
-  transition: {
-    duration: var(--main-transition);
-    timing-function: ease-out;
-  }
+  font-family: "Noto Sans", sans-serif;
+  box-sizing: content-box;
   margin: 0;
   padding: 0;
+
+  // Smooth transitions for interactive elements
+  transition-duration: var(--main-trans);
+  transition-timing-function: ease-out;
 }
 
-/// Mixin to apply CSS styles within a media query.
+// ======================================
+// 📱 RESPONSIVE MIXIN
+// ======================================
+/// Mixin: Apply styles within a media query
 ///
-/// @param {String|null} $min-width - The minimum width for the media query (e.g. "600px"). Optional.
-/// @param {String|null} $max-width - The maximum width for the media query (e.g. "900px"). Optional.
-/// @param {String} $class - The selector (class or element) to which styles will be applied.
-/// @param {Map} $styles - A map of CSS properties and values to apply (e.g. (color: red, font-size: 16px)).
+/// @param {String|null} $min-width - Minimum width (e.g., "600px") or null.
+/// @param {String|null} $max-width - Maximum width (e.g., "900px") or null.
+/// @param {String}      $selector  - The selector to style (e.g., ".my-class").
+/// @param {Map}         $styles    - Map of CSS properties and values.
 ///
-/// Usage example:
-///   @include apply-style-with-media-query("600px", "900px", ".my-class", (color: red, font-size: 16px));
+/// Usage:
+///   @include apply-style-with-media-query(null, "900px", ".box", (color: red, font-size: 16px));
 ///
-/// If $max-width is null or omitted, only min-width is applied.
-
-@mixin apply-style-with-media-query($min-width, $max-width, $class, $styles) {
+/// Logic:
+///   - Only max-width  → mobile-first styles
+///   - Only min-width  → desktop-first styles
+///   - Both set        → between breakpoints
+///
+@mixin apply-style-with-media-query(
+  $min-width,
+  $max-width,
+  $selector,
+  $styles
+) {
   @if $max-width != null and $min-width == null {
+    // --- Max-width only ---
     @media (max-width: #{$max-width}) {
-      #{$class} {
-        @each $property, $value in $styles {
-          #{$property}: #{$value};
+      #{$selector} {
+        @each $prop, $val in $styles {
+          #{$prop}: #{$val};
         }
       }
     }
   } @else if $min-width != null and $max-width == null {
+    // --- Min-width only ---
     @media (min-width: #{$min-width}) {
-      #{$class} {
-        @each $property, $value in $styles {
-          #{$property}: #{$value};
+      #{$selector} {
+        @each $prop, $val in $styles {
+          #{$prop}: #{$val};
         }
       }
     }
-  } @else {
+  } @else if $min-width != null and $max-width != null {
+    // --- Between min and max ---
     @media (min-width: #{$min-width}) and (max-width: #{$max-width}) {
-      #{$class} {
-        @each $property, $value in $styles {
-          #{$property}: #{$value};
+      #{$selector} {
+        @each $prop, $val in $styles {
+          #{$prop}: #{$val};
         }
       }
     }
