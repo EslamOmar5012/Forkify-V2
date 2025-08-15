@@ -10,4 +10,38 @@
     padding-top: 60px;
     padding-bottom: 20px;
   }
+  .info {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    column-gap: 40px;
+    row-gap: 60px;
+    padding: 20px;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    // row-gap: 10px;
+    padding: 15px 40px;
+    background-color: var(--bg-3);
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px var(--shadow-c-1);
+    &:hover {
+      transform: scale(1.02) translateY(-10px);
+    }
+    svg path {
+      fill: var(--c-2);
+    }
+    p {
+      margin-bottom: 20px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--c-1);
+    }
+    span {
+      word-spacing: 2px;
+      color: var(--c-3);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+  }
 }
