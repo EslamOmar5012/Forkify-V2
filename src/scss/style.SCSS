@@ -1,5 +1,5 @@
-@use "./_containers.SCSS";
-@use "./_nav-bar.SCSS";
-@use "./_results-recipes.SCSS";
-@use "./_results.SCSS";
-@use "./_recipes.SCSS";
+@use "./containers";
+@use "./nav-bar";
+@use "./results-recipes";
+@use "./results";
+@use "./recipes";
