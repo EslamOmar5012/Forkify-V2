@@ -277,6 +277,7 @@
     (
       justify-content: space-around,
       position: absolute,
+      z-index: 1,
       top: 110%,
       right: 20px,
       background-color: var(--bg-3),
@@ -347,6 +348,7 @@
     ".toggle-theme",
     (
       position: absolute,
+      z-index: 1,
       top: 110%,
       left: 20px,
     )
