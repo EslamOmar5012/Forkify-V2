@@ -41,6 +41,7 @@ body {
   background-color: var(--bg-1);
   transition: var(--main-transition);
   padding: 40px 0;
+  height: 20000px;
 }
 
 @media (max-width: 992px) {
@@ -562,7 +563,7 @@ body {
   row-gap: 60px;
   padding: 20px;
 }
-.recipes .card {
+.recipes .info .card {
   display: flex;
   flex-direction: column;
   padding: 15px 40px;
@@ -570,21 +571,101 @@ body {
   border-radius: 15px;
   box-shadow: 0px 25px 30px var(--shadow-c-2);
 }
-.recipes .card:hover {
+.recipes .info .card:hover {
   transform: scale(1.02) translateY(-10px);
 }
-.recipes .card svg path {
+.recipes .info .card svg path {
   fill: var(--c-2);
 }
-.recipes .card p {
+.recipes .info .card p {
   margin-bottom: 20px;
   font-weight: 600;
   text-transform: uppercase;
   color: var(--c-1);
 }
-.recipes .card span {
+.recipes .info .card span {
   word-spacing: 2px;
   color: var(--c-3);
   font-size: 14px;
   line-height: 1.7;
+}
+.recipes .recipe .about {
+  position: relative;
+  height: 250px;
+}
+.recipes .recipe .about h2 {
+  font-size: 1.5rem;
+  position: absolute;
+  bottom: -8%;
+  left: 50%;
+  transform: translate(-50%) skewY(-6deg);
+  color: white;
+  background-image: var(--btn-bg);
+  padding: 15px 40px;
+  font-weight: 500;
+}
+@media (max-width: 992px) {
+  .recipes .recipe .about h2 {
+    width: 70%;
+    font-size: 1.1rem;
+    padding: 10px 15px;
+  }
+}
+.recipes .recipe .about img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.recipes .recipe .about::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.recipes .recipe .info-for-recipe {
+  display: flex;
+  justify-content: space-between;
+}
+.recipes .recipe .info-for-recipe .timing-surving {
+  display: flex;
+  gap: 40px;
+  padding: 60px 40px 30px;
+}
+.recipes .recipe .info-for-recipe .timing-surving p {
+  display: flex;
+  align-items: center;
+  color: var(--c-1);
+  text-transform: uppercase;
+}
+.recipes .recipe .info-for-recipe .timing-surving p svg,
+.recipes .recipe .info-for-recipe .timing-surving p span {
+  margin-right: 5px;
+}
+.recipes .recipe .info-for-recipe .timing-surving p span {
+  font-weight: bold;
+}
+.recipes .recipe .info-for-recipe .timing-surving p svg path {
+  fill: var(--c-2);
+}
+.recipes .recipe .info-for-recipe .timing-surving .plus-minus svg:hover {
+  animation-name: bounce;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-duration: var(--main-trans);
+  cursor: pointer;
+}
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10px);
+  }
+}
+.recipes .recipe .info-for-recipe .timing-surving .plus-minus svg path {
+  fill: var(--c-2);
 }/*# sourceMappingURL=style.css.map */
