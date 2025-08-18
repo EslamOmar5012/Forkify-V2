@@ -41,7 +41,6 @@ body {
   background-color: var(--bg-1);
   transition: var(--main-transition);
   padding: 40px 0;
-  height: 20000px;
 }
 
 @media (max-width: 992px) {
@@ -629,6 +628,7 @@ body {
 .recipes .recipe .info-for-recipe {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .recipes .recipe .info-for-recipe .timing-surving {
   display: flex;
@@ -642,11 +642,16 @@ body {
   text-transform: uppercase;
 }
 .recipes .recipe .info-for-recipe .timing-surving p svg,
-.recipes .recipe .info-for-recipe .timing-surving p span {
+.recipes .recipe .info-for-recipe .timing-surving p .num {
   margin-right: 5px;
 }
-.recipes .recipe .info-for-recipe .timing-surving p span {
+.recipes .recipe .info-for-recipe .timing-surving p .num {
   font-weight: bold;
+}
+@media (max-width: 992px) {
+  .recipes .recipe .info-for-recipe .timing-surving p .span-text {
+    display: none;
+  }
 }
 .recipes .recipe .info-for-recipe .timing-surving p svg path {
   fill: var(--c-2);
@@ -668,4 +673,56 @@ body {
 }
 .recipes .recipe .info-for-recipe .timing-surving .plus-minus svg path {
   fill: var(--c-2);
+}
+.recipes .recipe .info-for-recipe button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-image: var(--btn-bg);
+  margin-top: 25px;
+  margin-right: 30px;
+}
+.recipes .recipe .info-for-recipe button svg {
+  -o-object-fit: center center;
+     object-fit: center center;
+}
+.recipes .recipe .info-for-recipe button:hover {
+  box-shadow: 0px 5px 10px var(--shadow-c-1);
+  transform: scale(1.2);
+  cursor: pointer;
+}
+.recipes .recipe .nutrition-facts {
+  background-color: var(--bg-3);
+  padding: 20px 0 40px;
+}
+.recipes .recipe .nutrition-facts h2 {
+  padding: 30px 0 40px;
+  font-weight: 500;
+}
+.recipes .recipe .nutrition-facts .calories {
+  width: 80%;
+  margin: auto;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+}
+.recipes .recipe .nutrition-facts .calories .box {
+  background-color: var(--bg-2);
+  padding: 30px 40px;
+  border-radius: 15px;
+}
+.recipes .recipe .nutrition-facts .calories .box h3 {
+  max-width: 100%;
+  font-weight: 500;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: var(--c-1);
+  margin-bottom: 5px;
+}
+.recipes .recipe .nutrition-facts .calories .box p {
+  color: var(--c-2);
+}
+.recipes .recipe .ingredients {
+  padding: 30px 0;
 }/*# sourceMappingURL=style.css.map */
