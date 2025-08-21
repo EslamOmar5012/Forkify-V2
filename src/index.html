@@ -123,7 +123,7 @@
         </div>
 
         <!-- Search Bar -->
-        <form id="search-bar" method="GET">
+        <form id="search-bar">
           <input
             type="text"
             name="search-input"
@@ -219,9 +219,9 @@
           </div>
 
           <div class="copyRight-pagination">
-            <!-- <div class="pagination">
+            <div class="pagination">
               <div class="pagination-btns">
-                <button class="btn btn-next">
+                <!-- <button class="btn-next">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -235,7 +235,7 @@
                   </svg>
                   Page 1
                 </button>
-                <button class="btn btn-prev">
+                <button class="btn-prev">
                   Page 5
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -250,12 +250,16 @@
                       clip-rule="evenodd"
                     />
                   </svg>
-                </button>
+                </button> -->
               </div>
               <div class="page-num">
-                <p>Page <span>2</span> out of <span>5</span></p>
+                <p>
+                  Page <span class="page">_</span> out of
+                  <span class="total_pages">_</span>
+                </p>
               </div>
-            </div> -->
+            </div>
+
             <p>
               &copy; Version Rebuilt by
               <a href="https://github.com/EslamOmar5012">EslamXeno</a>
@@ -267,7 +271,7 @@
 
         <!-- Recipes -->
         <div class="recipes">
-          <!-- <h2>What Can You Do in Forkify V2?</h2>
+          <h2>What Can You Do in Forkify V2?</h2>
           <div class="info">
             <div class="card">
               <div>
@@ -357,8 +361,9 @@
                 protein based on ingredient quantities.</span
               >
             </div>
-          </div> -->
-          <div class="recipe">
+          </div>
+
+          <!-- <div class="recipe">
             <div class="about">
               <h2>Double Crust Stuffed Pizza</h2>
               <img src="./imgs/100111309d9.jpg" alt="eslam" />
@@ -464,8 +469,119 @@
 
             <div class="ingredients">
               <h2>Recipe Ingredients</h2>
+              <ul class="ing-list">
+                <li>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 48 48"
+                  >
+                    <path
+                      fill="#D5D5D5"
+                      fill-rule="evenodd"
+                      stroke="#D5D5D5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="4"
+                      d="m4 24l5-5l10 10L39 9l5 5l-25 25z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <span class="number">1</span>
+                  <span class="ing">suger</span>
+                </li>
+                <li>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 48 48"
+                  >
+                    <path
+                      fill="#D5D5D5"
+                      fill-rule="evenodd"
+                      stroke="#D5D5D5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="4"
+                      d="m4 24l5-5l10 10L39 9l5 5l-25 25z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <span class="number">1</span>
+                  <span class="ing">suger</span>
+                </li>
+                <li>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 48 48"
+                  >
+                    <path
+                      fill="#D5D5D5"
+                      fill-rule="evenodd"
+                      stroke="#D5D5D5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="4"
+                      d="m4 24l5-5l10 10L39 9l5 5l-25 25z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <span class="number">1</span>
+                  <span class="ing">suger</span>
+                </li>
+                <li>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 48 48"
+                  >
+                    <path
+                      fill="#D5D5D5"
+                      fill-rule="evenodd"
+                      stroke="#D5D5D5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="4"
+                      d="m4 24l5-5l10 10L39 9l5 5l-25 25z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <span class="number">1</span>
+                  <span class="ing">suger</span>
+                </li>
+              </ul>
             </div>
-          </div>
+
+            <div class="cook">
+              <h2>How To Cook It</h2>
+              <p>
+                This Recipe was Carefully Designed and Tested by
+                <span>All Recipes</span> Please Check Out Directions at their
+                Website.
+              </p>
+              <button class="btn btn-cook direction">
+                Directions
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="#D5D5D5"
+                    fill-rule="evenodd"
+                    d="M13.47 5.47a.75.75 0 0 1 1.06 0l6 6a.75.75 0 0 1 0 1.06l-6 6a.75.75 0 1 1-1.06-1.06l4.72-4.72H4a.75.75 0 0 1 0-1.5h14.19l-4.72-4.72a.75.75 0 0 1 0-1.06"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div> -->
         </div>
       </div>
     </div>

@@ -20,13 +20,21 @@
     )
   );
 
+  .spinner {
+    svg path {
+      fill: var(--c-2);
+    }
+  }
+
   .results {
     width: 100%;
-    .title {
+    .title,
+    .error {
       width: 90%;
       padding: 0 10px;
       margin: auto;
       display: flex;
+      align-items: center;
       justify-content: center;
       padding-top: 40px;
       @include global-rules.apply-style-with-media-query(
@@ -156,7 +164,8 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 15px;
-        .btn {
+        .btn-prev,
+        .btn-next {
           display: flex;
           column-gap: 5px;
           justify-content: space-between;
@@ -177,6 +186,13 @@
               fill: var(--c-2);
             }
           }
+        }
+
+        .btn-prev {
+          margin-left: auto;
+        }
+        .btn-next {
+          margin-right: auto;
         }
       }
       .page-num {

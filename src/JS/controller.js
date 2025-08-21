@@ -1,38 +1,45 @@
-document.querySelector(".btn-toggle-theme").addEventListener("click", (e) => {
-  e.preventDefault();
-  document.body.classList.toggle("dark-theme");
-  document.querySelector(".btn-toggle-theme").classList.toggle("left");
-  document.querySelector(".sun").classList.toggle("rotate");
-  // document.querySelector(".recipes-stored").insertAdjacentHTML(
-  //   "beforeend",
-  //   `<div class="bookmark">
-  //     <div class="image">
-  //       <img
-  //       src=${img}
-  //       alt="img"
-  //       />
-  //       </div>
-  //       <div class="text">
-  //         <p>Roasted Mushroom and Green Bean Farro Salad eslam omar</p>
-  //       <span>Closet Cooking</span>
-  //     </div>
-  //     <a href = ""></a>
-  //   </div>`
-  // );
-});
+import * as helper from "./helpers";
+import * as model from "./model";
+import navbarView from "./views/navbarView";
+import resultsView from "./views/resultsView";
+import paginationView from "./views/paginationView";
 
-const searchBar = document.querySelector(".input-search-bar");
+const controlSearch = async () => {
+  try {
+    resultsView.renderSpinner();
 
-const mq = window.matchMedia("(max-width: 1200px)");
+    const query = navbarView.getQuery();
 
-const updatePlaceholder = () => {
-  mq.matches
-    ? (searchBar.placeholder = "")
-    : (searchBar.placeholder = "Search Over 1,000,0000 Recipes");
+    if (!query) return;
+
+    await model.loadResaults(query);
+
+    console.log(model.state);
+
+    resultsView.render(model.getSearchResultsPage());
+
+    paginationView.render(model.state.search);
+  } catch (err) {
+    console.error(err);
+    resultsView.renderError();
+  }
 };
 
-// Run on page load
-updatePlaceholder();
+const controlPangination = (pageNum) => {
+  try {
+    resultsView.render(model.getSearchResultsPage(pageNum));
 
-// Run whenever the screen size matches/unmatches
-mq.addEventListener("change", updatePlaceholder);
+    console.log(model.state.search.page);
+
+    paginationView.render(model.state.search);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const main = () => {
+  navbarView.hundleSearch(controlSearch);
+  paginationView.handlePagination(controlPangination);
+};
+
+main();
