@@ -10,7 +10,7 @@ const controlSearch = async () => {
 
     const query = navbarView.getQuery();
 
-    if (!query) return;
+    if (!query) throw new Error("Empty search");
 
     await model.loadResaults(query);
 
@@ -18,7 +18,7 @@ const controlSearch = async () => {
 
     paginationView.render(model.state.search);
 
-    resultsView.handleClickResault();
+    resultsView.ClickResault();
   } catch (err) {
     console.error(err);
     resultsView.renderError();

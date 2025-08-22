@@ -22,7 +22,7 @@ class ResultsView extends View {
       .join("");
   }
 
-  handleClickResault() {
+  ClickResault() {
     const allResults = document.querySelectorAll(".result");
     allResults.forEach((result) => {
       result.addEventListener("click", (e) => {
