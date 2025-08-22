@@ -27,7 +27,7 @@ class ResultsView extends View {
     allResults.forEach((result) => {
       result.addEventListener("click", (e) => {
         const link = e.target.querySelector("a");
-        window.location.hash = link.href;
+        window.location.hash = link.href.split("/").at(-1);
       });
     });
   }
