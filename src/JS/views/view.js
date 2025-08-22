@@ -10,12 +10,11 @@ export default class View {
   }
 
   update(data) {
-    // if (!data || data.length === 0) return this.renderError();
+    if (!data || data.length === 0) return this.renderError();
     this._data = data;
 
     const newMarkup = this._generateMarkup();
 
-    //to make a DOM object that is not in page
     const newDOM = document.createRange().createContextualFragment(newMarkup);
 
     const newElements = Array.from(newDOM.querySelectorAll("*"));
@@ -23,27 +22,20 @@ export default class View {
 
     newElements.forEach((newEl, i) => {
       const curEl = curElement[i];
-      //console.log(curEl, newEl.isEqualNode(curEl));
 
-      //Update changed TEXT
       if (
         !newEl.isEqualNode(curEl) &&
         newEl.firstChild?.nodeValue.trim() !== ""
       ) {
-        //console.log('🔴', newEl.firstChild.nodeValue.trim());
         curEl.textContent = newEl.textContent;
       }
 
-      //Updates changed ATTRIBUTES
       if (!newEl.isEqualNode(curEl)) {
         Array.from(newEl.attributes).forEach((attr) =>
           curEl.setAttribute(attr.name, attr.value)
         );
       }
     });
-
-    //console.log(curElement);
-    //console.log(newElements);
   }
 
   _clear() {
@@ -90,19 +82,4 @@ export default class View {
     this._clear();
     this._parentEl.insertAdjacentHTML("afterbegin", markup);
   }
-
-  // renderMessage(message = this._message) {
-  //   const markup = `
-  //     <div class="message">
-  //       <div>
-  //         <svg>
-  //           <use href="${icons}#icon-smile"></use>
-  //         </svg>
-  //       </div>
-  //       <p>${message}</p>
-  //     </div>
-  //   `;
-  //   this._clear();
-  //   this._parentEl.insertAdjacentHTML("afterbegin", markup);
-  // }
 }

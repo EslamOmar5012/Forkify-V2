@@ -14,11 +14,11 @@ const controlSearch = async () => {
 
     await model.loadResaults(query);
 
-    console.log(model.state);
-
     resultsView.render(model.getSearchResultsPage());
 
     paginationView.render(model.state.search);
+
+    resultsView.handleClickResault();
   } catch (err) {
     console.error(err);
     resultsView.renderError();
@@ -29,10 +29,28 @@ const controlPangination = (pageNum) => {
   try {
     resultsView.render(model.getSearchResultsPage(pageNum));
 
-    console.log(model.state.search.page);
-
     paginationView.render(model.state.search);
   } catch (err) {
+    console.log(err);
+  }
+};
+
+const controlRecipes = async () => {
+  try {
+    const id = window.location.hash.slice(1);
+    if (!id) return;
+
+    recipeView.renderSpinner();
+
+    await model.loadRecipe(id);
+
+    resultsView.update(model.getSearchResultsPage());
+
+    bookmarksView.update(model.state.bookMarks);
+
+    recipeView.render(model.state.recipe);
+  } catch (err) {
+    recipeView.renderError();
     console.log(err);
   }
 };

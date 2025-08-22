@@ -16,10 +16,20 @@ class ResultsView extends View {
                     <p>${recipe.title}</p>
                     <span>${recipe.publisher}</span>
                   </div>
-                  <a href="${recipe.id}"></a>
+                  <a href="#${recipe.id}"></a>
                 </div>`;
       })
       .join("");
+  }
+
+  handleClickResault() {
+    const allResults = document.querySelectorAll(".result");
+    allResults.forEach((result) => {
+      result.addEventListener("click", (e) => {
+        const link = e.target.querySelector("a");
+        window.location.hash = link.href;
+      });
+    });
   }
 }
 

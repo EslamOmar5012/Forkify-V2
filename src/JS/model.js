@@ -71,8 +71,8 @@ export const loadResaults = async (query) => {
 export const getSearchResultsPage = function (page = DEFAULT_PAGE) {
   state.search.page = page;
 
-  const start = (page - 1) * state.search.resultsPerPage; // 0
-  const end = page * state.search.resultsPerPage; // 9
+  const start = (page - 1) * state.search.resultsPerPage;
+  const end = page * state.search.resultsPerPage;
 
   console.log(state.search.results.slice(start, end));
 
@@ -92,23 +92,19 @@ export const presistBookmarks = () => {
 };
 
 export const addBookmarks = (recipe) => {
-  //add bookMarks
   state.bookMarks.push(recipe);
   state.recipe.bookMarked = true;
 
-  //add bookMarks to localStorage
   presistBookmarks();
 };
 
 export const deleteBookmark = (id) => {
-  //delete bookmark
   const newBookMarksArray = state.bookMarks.filter((el) => el.id !== id);
 
   state.bookMarks = [...newBookMarksArray];
 
   state.recipe.bookMarked = false;
 
-  //add bookMarks to localStorage
   presistBookmarks();
 };
 
@@ -122,11 +118,9 @@ init();
 const clearBookmars = () => {
   localStorage.clear("bookmarks");
 };
-// Clear bookmarks();
 
 export const uploadRecipe = async (newRecipe) => {
   try {
-    //console.log(newRecipe);
     const ingredients = Object.entries(newRecipe)
       .filter((entry) => entry[0].startsWith("ingredient") && entry[1] !== "")
       .map((ing) => {
@@ -138,7 +132,6 @@ export const uploadRecipe = async (newRecipe) => {
         const [quantity, unit, description] = ingArr;
         return { quantity: quantity ? +quantity : null, unit, description };
       });
-    //  console.log(ingredients);
 
     const recipe = {
       title: newRecipe.title,
@@ -149,9 +142,7 @@ export const uploadRecipe = async (newRecipe) => {
       servings: +newRecipe.servings,
       ingredients,
     };
-    //console.log(recipe);
     const data = await helper.AJAX(`${API_URL}?key=${KEY}`, recipe);
-    //console.log(data);
     state.recipe = createRecipeObject(data);
     addBookmarks(state.recipe);
     state.recipe.key = KEY;
