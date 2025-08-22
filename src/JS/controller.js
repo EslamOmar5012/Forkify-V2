@@ -3,6 +3,7 @@ import * as model from "./model";
 import navbarView from "./views/navbarView";
 import resultsView from "./views/resultsView";
 import paginationView from "./views/paginationView";
+import recipeView from "./views/recipeView";
 
 const controlSearch = async () => {
   try {
@@ -30,6 +31,8 @@ const controlPangination = (pageNum) => {
     resultsView.render(model.getSearchResultsPage(pageNum));
 
     paginationView.render(model.state.search);
+
+    resultsView.ClickResault();
   } catch (err) {
     console.log(err);
   }
@@ -46,7 +49,7 @@ const controlRecipes = async () => {
 
     resultsView.update(model.getSearchResultsPage());
 
-    bookmarksView.update(model.state.bookMarks);
+    // bookmarksView.update(model.state.bookMarks);
 
     recipeView.render(model.state.recipe);
   } catch (err) {
@@ -58,6 +61,7 @@ const controlRecipes = async () => {
 const main = () => {
   navbarView.hundleSearch(controlSearch);
   paginationView.handlePagination(controlPangination);
+  recipeView.addHandlerRender(controlRecipes);
 };
 
 main();

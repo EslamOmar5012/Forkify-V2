@@ -45,7 +45,7 @@ export const loadRecipe = async (id) => {
       const data = await helper.AJAX(`${API_URL}/${id}?key=${KEY}`);
       state.recipe = createRecipeObject(data);
     }
-    console.log(state.recipe);
+    // console.log(state.recipe);
   } catch (err) {
     throw err;
   }
@@ -74,7 +74,7 @@ export const getSearchResultsPage = function (page = DEFAULT_PAGE) {
   const start = (page - 1) * state.search.resultsPerPage;
   const end = page * state.search.resultsPerPage;
 
-  console.log(state.search.results.slice(start, end));
+  // console.log(state.search.results.slice(start, end));
 
   return state.search.results.slice(start, end);
 };

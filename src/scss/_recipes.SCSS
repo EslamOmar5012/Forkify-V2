@@ -203,11 +203,24 @@
         grid-template-columns: repeat(2, 50%);
         justify-content: center;
         row-gap: 15px;
+        @include global-rules.apply-style-with-media-query(
+          null,
+          992px,
+          "&",
+          (
+            grid-template-columns: 100%,
+            column-gap: 10px,
+            justify-content: center,
+          )
+        );
         li {
           justify-content: center;
           display: flex;
           align-items: center;
+          // overflow: hidden;
+          // text-overflow: ellipsis;
           svg {
+            min-width: 20px;
             margin-right: 5px;
             path {
               fill: var(--c-2);
@@ -217,9 +230,22 @@
           .number {
             margin-right: 5px;
             color: var(--c-1);
+            white-space: nowrap;
+          }
+          .unit {
+            font-weight: bold;
+            margin: {
+              left: 5px;
+              right: 5px;
+            }
           }
           .ing {
             color: var(--c-1);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 100%;
+            display: inline-block;
           }
         }
       }
@@ -265,6 +291,12 @@
           }
         }
       }
+    }
+  }
+
+  .spinner {
+    svg path {
+      fill: var(--c-2);
     }
   }
 }
