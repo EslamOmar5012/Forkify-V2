@@ -26,6 +26,7 @@
     <!-- Main Script -->
     <script type="module" src="./JS/controller.js"></script>
   </head>
+
   <body>
     <div class="container">
       <!-- Navbar -->
@@ -235,7 +236,7 @@
 
             <p>
               &copy; Version Rebuilt by
-              <a href="https://github.com/EslamOmar5012">EslamXeno</a>
+              <a href="https://github.com/EslamOmar5012">EslamOmar</a>
               Check the Original App to See the Difference:
               <a href="https://forkify-mxhamed.netlify.app/">forkify@2.0.0</a>
             </p>
@@ -556,6 +557,123 @@
             </div>
           </div> -->
         </div>
+      </div>
+    </div>
+
+    <!-- Add this before the closing </body> tag in your index.html -->
+
+    <div class="overlay hidden">
+      <div class="add-recipe-window">
+        <button class="btn--close-modal">&times;</button>
+        <form class="upload">
+          <div class="upload__column">
+            <h3 class="upload__heading">Recipe data</h3>
+
+            <label>Title</label>
+            <input
+              required
+              name="title"
+              type="text"
+              placeholder="Recipe title"
+            />
+
+            <label>URL</label>
+            <input
+              required
+              name="sourceUrl"
+              type="url"
+              placeholder="Recipe source URL"
+            />
+
+            <label>Image URL</label>
+            <input required name="image" type="url" placeholder="Image URL" />
+
+            <label>Publisher</label>
+            <input
+              required
+              name="publisher"
+              type="text"
+              placeholder="Publisher name"
+            />
+
+            <label>Prep time</label>
+            <input
+              required
+              name="cookingTime"
+              type="number"
+              placeholder="Cooking time in minutes"
+            />
+
+            <label>Servings</label>
+            <input
+              required
+              name="servings"
+              type="number"
+              placeholder="Number of servings"
+            />
+          </div>
+
+          <div class="upload__column">
+            <h3 class="upload__heading">Ingredients</h3>
+
+            <label>Ingredient 1</label>
+            <input
+              type="text"
+              name="ingredient-1"
+              placeholder="Format: 'Quantity,Unit,Description'"
+            />
+
+            <label>Ingredient 2</label>
+            <input
+              type="text"
+              name="ingredient-2"
+              placeholder="Format: 'Quantity,Unit,Description'"
+            />
+
+            <label>Ingredient 3</label>
+            <input
+              type="text"
+              name="ingredient-3"
+              placeholder="Format: 'Quantity,Unit,Description'"
+            />
+
+            <label>Ingredient 4</label>
+            <input
+              type="text"
+              name="ingredient-4"
+              placeholder="Format: 'Quantity,Unit,Description'"
+            />
+
+            <label>Ingredient 5</label>
+            <input
+              type="text"
+              name="ingredient-5"
+              placeholder="Format: 'Quantity,Unit,Description'"
+            />
+
+            <label>Ingredient 6</label>
+            <input
+              type="text"
+              name="ingredient-6"
+              placeholder="Format: 'Quantity,Unit,Description'"
+            />
+          </div>
+
+          <button class="btn upload__btn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="#fff"
+                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zm4 18H6V4h7v5h5z"
+              />
+            </svg>
+            <span>Upload Recipe</span>
+          </button>
+        </form>
       </div>
     </div>
   </body>

@@ -5,5 +5,5 @@ export const NUTRITION_KEY = "L72Wmvg3bhjGPGQii5e3IRUq11yzBbBjZI7lghqV";
 export const TIMEOUT_SEC = 5;
 export const RES_PER_PAGE = 5;
 export const DEFAULT_PAGE = 1;
-export const KEY = "f42fd629-0992-4d2f-a27b-9f9edc1b5328";
+export const KEY = "2b48b047-7607-4027-b15b-507bb9af9a5a";
 export const MODAL_CLOSE_SEC = 2.5;

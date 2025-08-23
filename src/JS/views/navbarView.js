@@ -7,8 +7,8 @@ class NavBarView extends View {
 
   constructor() {
     super();
-    this._toggleTheme();
     this._updatePlaceholder();
+    this._toggleTheme();
     this._mq.addEventListener("change", this._updatePlaceholder.bind(this));
   }
 
