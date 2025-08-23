@@ -48,6 +48,7 @@ class RecipeView extends View {
                     </p>
                     <div class="plus-minus">
                     <svg
+                        class = "minus"
                         xmlns="http://www.w3.org/2000/svg"
                         width="30"
                         height="30"
@@ -59,6 +60,7 @@ class RecipeView extends View {
                         />
                     </svg>
                     <svg
+                        class = "plus"
                         xmlns="http://www.w3.org/2000/svg"
                         width="30"
                         height="30"
@@ -93,23 +95,23 @@ class RecipeView extends View {
                 </div>
 
                 <div class="nutrition-facts">
-                <h2>Nutrition Facts / Serving</h2>
+                <h2>Nutrition Facts / 100G</h2>
                 <div class="calories">
                     <div class="box">
                     <h3>Calories</h3>
-                    <p>375 Kcal</p>
+                    <p>${Math.round(this._data.calories)} Kcal</p>
                     </div>
                     <div class="box">
                     <h3>Fats</h3>
-                    <p>23 g</p>
+                    <p>${Math.round(this._data.fats)} g</p>
                     </div>
                     <div class="box">
                     <h3>Carbs</h3>
-                    <p>375Kcal</p>
+                    <p>${Math.round(+this._data.carbs)} g</p>
                     </div>
                     <div class="box">
                     <h3>Protein</h3>
-                    <p>14.5 g</p>
+                    <p>${Math.round(+this._data.protien)} g</p>
                     </div>
                 </div>
                 </div>
@@ -132,8 +134,8 @@ class RecipeView extends View {
                     }</span> Please Check Out Directions at their
                     Website.
                 </p>
-                <button class="btn btn-cook direction">
-                    <a href = "${this._data.publisher}" target = "_blank"></a>
+                <button class="btn btn-cook-direction">
+                    <a href = "${this._data.sourceUrl}" target = "_blank"></a>
                     Directions
                     <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -154,7 +156,7 @@ class RecipeView extends View {
   }
 
   _generateMarkupIngredient(ing) {
-    console.log(ing.quantity);
+    // console.log(ing.quantity);
     const frac = new Fraction(ing.quantity);
     return `
                 <li>
@@ -188,6 +190,28 @@ class RecipeView extends View {
     ["hashchange", "load"].forEach((el) =>
       window.addEventListener(el, handler)
     );
+  }
+
+  addHandlerServings(handler) {
+    const serving_btns = document.querySelector(".plus-minus");
+    serving_btns.addEventListener("click", (e) => {
+      const btn = e.target.closest("svg");
+      //   console.log(btn.classList);
+      if (!btn) return;
+
+      if (btn.classList.value === "plus" && this._data.servings < 10)
+        handler(this._data.servings + 1);
+
+      if (btn.classList.value === "minus" && this._data.servings > 1)
+        handler(this._data.servings - 1);
+    });
+  }
+
+  handleDirection() {
+    const btn = document.querySelector(".btn-cook-direction");
+    btn.addEventListener("click", (e) => {
+      btn.querySelector("a").click();
+    });
   }
 }
 

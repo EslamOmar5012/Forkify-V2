@@ -3,6 +3,8 @@ import { KEY } from "./config";
 import { API_URL } from "./config";
 import { RES_PER_PAGE } from "./config";
 import { DEFAULT_PAGE } from "./config";
+import { NUTRITION_API } from "./config";
+import { NUTRITION_KEY } from "./config";
 
 export const state = {
   recipe: {},
@@ -108,12 +110,12 @@ export const deleteBookmark = (id) => {
   presistBookmarks();
 };
 
-const init = () => {
-  const bookMarks = localStorage.getItem("bookmarks");
-  if (bookMarks) state.bookMarks = JSON.parse(bookMarks);
-};
+// const init = () => {
+//   const bookMarks = localStorage.getItem("bookmarks");
+//   if (bookMarks) state.bookMarks = JSON.parse(bookMarks);
+// };
 
-init();
+// init();
 
 const clearBookmars = () => {
   localStorage.clear("bookmarks");
@@ -148,5 +150,38 @@ export const uploadRecipe = async (newRecipe) => {
     state.recipe.key = KEY;
   } catch (err) {
     throw err;
+  }
+};
+
+export const getNutrition = async (recipe) => {
+  try {
+    const url = `${NUTRITION_API}${encodeURIComponent(
+      recipe
+    )}&pageSize=1&api_key=L72Wmvg3bhjGPGQii5e3IRUq11yzBbBjZI7lghqV`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`there is error in response ${res.status}`);
+    const data = await res.json();
+
+    const nutritions = data.foods[0].foodNutrients;
+
+    state.recipe.calories = nutritions.find(
+      (el) => el.nutrientName === "Energy"
+    ).value;
+
+    state.recipe.fats = nutritions.find(
+      (el) => el.nutrientName === "Total lipid (fat)"
+    ).value;
+
+    state.recipe.carbs = nutritions.find(
+      (el) => el.nutrientName === "Carbohydrate, by difference"
+    ).value;
+
+    state.recipe.protien = nutritions.find(
+      (el) => el.nutrientName === "Protein"
+    ).value;
+
+    console.log(state.recipe);
+  } catch (err) {
+    console.error(err);
   }
 };

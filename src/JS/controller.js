@@ -47,15 +47,25 @@ const controlRecipes = async () => {
 
     await model.loadRecipe(id);
 
+    await model.getNutrition(model.state.recipe.title);
+
     resultsView.update(model.getSearchResultsPage());
 
     // bookmarksView.update(model.state.bookMarks);
 
     recipeView.render(model.state.recipe);
+
+    recipeView.addHandlerServings(controlServings);
+    recipeView.handleDirection();
   } catch (err) {
     recipeView.renderError();
     console.log(err);
   }
+};
+
+const controlServings = (newServings) => {
+  model.updateServings(newServings);
+  recipeView.update(model.state.recipe);
 };
 
 const main = () => {

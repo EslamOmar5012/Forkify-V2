@@ -1,4 +1,7 @@
 export const API_URL = "https://forkify-api.herokuapp.com/api/v2/recipes";
+export const NUTRITION_API =
+  "https://api.nal.usda.gov/fdc/v1/foods/search?query=";
+export const NUTRITION_KEY = "L72Wmvg3bhjGPGQii5e3IRUq11yzBbBjZI7lghqV";
 export const TIMEOUT_SEC = 5;
 export const RES_PER_PAGE = 5;
 export const DEFAULT_PAGE = 1;
