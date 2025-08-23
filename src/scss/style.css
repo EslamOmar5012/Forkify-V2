@@ -141,23 +141,22 @@ body {
   transform: rotate3d(1, 0, 0, 90deg) scale(0);
   perspective-origin: bottom left;
 }
-.navbar .add-store .recipes-stored .message-container {
+.navbar .add-store .recipes-stored .error {
   padding-left: 10px;
   height: 150px;
   display: flex;
   align-items: center;
 }
-.navbar .add-store .recipes-stored .message-container svg {
+.navbar .add-store .recipes-stored .error svg {
   margin-right: 10px;
 }
-.navbar .add-store .recipes-stored .message-container svg path {
-  stroke: var(--c-2);
-}
-.navbar .add-store .recipes-stored .message-container svg circle {
+.navbar .add-store .recipes-stored .error svg path {
   fill: var(--c-2);
 }
-.navbar .add-store .recipes-stored .message-container p {
+.navbar .add-store .recipes-stored .error h3 {
   color: var(--c-1);
+  font-weight: light;
+  font-size: 16px;
 }
 .navbar .add-store .recipes-stored .bookmark {
   position: relative;

@@ -91,7 +91,7 @@
       perspective-origin: bottom left;
 
       // Empty state message
-      .message-container {
+      .error {
         padding-left: 10px;
         height: 150px;
         display: flex;
@@ -100,14 +100,13 @@
         svg {
           margin-right: 10px;
           path {
-            stroke: var(--c-2);
-          }
-          circle {
             fill: var(--c-2);
           }
         }
-        p {
+        h3 {
           color: var(--c-1);
+          font-weight: light;
+          font-size: 16px;
         }
       }
 

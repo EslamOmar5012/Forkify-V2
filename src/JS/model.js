@@ -110,13 +110,6 @@ export const deleteBookmark = (id) => {
   presistBookmarks();
 };
 
-// const init = () => {
-//   const bookMarks = localStorage.getItem("bookmarks");
-//   if (bookMarks) state.bookMarks = JSON.parse(bookMarks);
-// };
-
-// init();
-
 const clearBookmars = () => {
   localStorage.clear("bookmarks");
 };
@@ -179,9 +172,14 @@ export const getNutrition = async (recipe) => {
     state.recipe.protien = nutritions.find(
       (el) => el.nutrientName === "Protein"
     ).value;
-
-    console.log(state.recipe);
   } catch (err) {
     console.error(err);
   }
 };
+
+const init = () => {
+  const bookMarks = localStorage.getItem("bookmarks");
+  if (bookMarks) state.bookMarks = JSON.parse(bookMarks);
+};
+
+init();

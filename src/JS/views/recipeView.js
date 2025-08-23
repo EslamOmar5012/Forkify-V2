@@ -213,6 +213,15 @@ class RecipeView extends View {
       btn.querySelector("a").click();
     });
   }
+
+  addHandlerBookmark(handler) {
+    document.querySelector(".btn-bookmark").addEventListener("click", (e) => {
+      const btn = e.target.closest(".btn-bookmark");
+      console.log(btn);
+      if (!btn) return;
+      handler();
+    });
+  }
 }
 
 export default new RecipeView();

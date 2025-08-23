@@ -4,6 +4,7 @@ import navbarView from "./views/navbarView";
 import resultsView from "./views/resultsView";
 import paginationView from "./views/paginationView";
 import recipeView from "./views/recipeView";
+import bookMarksView from "./views/bookMarksView";
 
 const controlSearch = async () => {
   try {
@@ -19,7 +20,7 @@ const controlSearch = async () => {
 
     paginationView.render(model.state.search);
 
-    resultsView.ClickResault();
+    resultsView.clickResult();
   } catch (err) {
     console.error(err);
     resultsView.renderError();
@@ -32,7 +33,7 @@ const controlPangination = (pageNum) => {
 
     paginationView.render(model.state.search);
 
-    resultsView.ClickResault();
+    resultsView.clickResult();
   } catch (err) {
     console.log(err);
   }
@@ -49,14 +50,15 @@ const controlRecipes = async () => {
 
     await model.getNutrition(model.state.recipe.title);
 
-    resultsView.update(model.getSearchResultsPage());
-
-    // bookmarksView.update(model.state.bookMarks);
-
     recipeView.render(model.state.recipe);
 
     recipeView.addHandlerServings(controlServings);
+
     recipeView.handleDirection();
+
+    recipeView.addHandlerBookmark(controlBookmark);
+
+    bookMarksView.clickResult(model.state.bookMarks);
   } catch (err) {
     recipeView.renderError();
     console.log(err);
@@ -68,10 +70,28 @@ const controlServings = (newServings) => {
   recipeView.update(model.state.recipe);
 };
 
+const controlBookmark = () => {
+  if (!model.state.recipe.bookMarked) model.addBookmarks(model.state.recipe);
+  else model.deleteBookmark(model.state.recipe.id);
+
+  recipeView.update(model.state.recipe);
+
+  bookMarksView.render(model.state.bookMarks);
+
+  bookMarksView.clickResult(model.state.bookMarks);
+};
+
+const controlLoadBookmarks = () => {
+  bookMarksView.render(model.state.bookMarks);
+
+  bookMarksView.clickResult(model.state.bookMarks);
+};
+
 const main = () => {
   navbarView.hundleSearch(controlSearch);
   paginationView.handlePagination(controlPangination);
   recipeView.addHandlerRender(controlRecipes);
+  bookMarksView.addHandlerRender(controlLoadBookmarks);
 };
 
 main();
