@@ -11,7 +11,7 @@
 <br />
 <div align="center">
   <a href="https://forkify-gray.vercel.app/">
-    <img src="./src/img/favicon.png" alt="Logo" height="80">
+    <img src="./src/img/favicon.ico" alt="Logo" height="80">
   </a>
   <h1 align="center">Forkify V2</h1>
   <p align="center">
@@ -286,3 +286,4 @@ Contributions are welcome! Please fork the repo and submit a pull request, or op
 - [USDA FoodData Central API](https://fdc.nal.usda.gov/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
